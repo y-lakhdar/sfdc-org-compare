@@ -1,0 +1,42 @@
+{
+  "name": "sfdc-org-compare",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^3.0.0",
+    "extract-zip": "^1.6.7",
+    "fs-extra": "^8.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-loader": "^8.0.6",
+    "eslint": "^6.1.0",
+    "prettier": "^1.18.2",
+    "webpack": "^4.39.1",
+    "webpack-cli": "^3.3.6",
+    "webpack-notifier": "^1.8.0"
+  },
+  "scripts": {
+    "start": "babel-node -- ./src/index.js",
+    "build": "node_modules/.bin/webpack --process --progress --colors",
+    "precommit": "lint-staged"
+  },
+  "prettier": {
+    "printWidth": 140,
+    "singleQuote": true
+  },
+  "lint-staged": {
+    "*.{js}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "author": {
+    "name": "Yassine Lakhdar",
+    "url": "http://github.com/y-lakhdar"
+  }
+}
