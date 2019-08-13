@@ -1,3 +1,5 @@
+// import { Logger } from './logger';
+const { getParentPath } = require('./../utils/fileUtils');
 const path = require('path');
 const extractZip = require('extract-zip');
 
@@ -8,8 +10,8 @@ const extractZip = require('extract-zip');
  */
 export const extract = zipPath => {
   return new Promise((resolve, reject) => {
-    // TODO: put in a variable "sfdc-org-diff"
-    return extractZip(zipPath, { dir: path.resolve(__dirname, 'sfdc-org-diff') }, err => {
+    // Logger.info(`Extracting ${zipPath}`);
+    return extractZip(path.resolve(zipPath, 'unpackaged.zip'), { dir: zipPath }, err => {
       if (err) {
         reject(err);
       }

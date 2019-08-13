@@ -4,7 +4,7 @@ const recursive = require('recursive-readdir');
 
 export const fetchAllFiles = rootDir => {
   return new Promise((resolve, reject) => {
-    const ignore = ['*-meta.xml', '.DS_Store'];
+    const ignore = ['*-meta.xml', '.DS_Store', 'unpackaged.zip'];
     recursive(rootDir, ignore)
       .then(data => {
         resolve(data);
@@ -25,6 +25,12 @@ export const getFileContentSync = filePath => {
 
 export const getFileNameFromPath = path => {
   return _.last(path.split('/'));
+};
+
+export const getParentPath = path => {
+  const arr = path.split('/');
+  arr.pop();
+  return arr.join('/');
 };
 
 export const deleteDirectory = path => {

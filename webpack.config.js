@@ -1,15 +1,12 @@
 const path = require('path');
 const WebpackNotifierPlugin = require('webpack-notifier');
-
-const plugins = [];
-plugins.push(new WebpackNotifierPlugin());
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   name: 'client',
   target: 'node',
   entry: './src/index.js',
-  // mode: 'production',
-  mode: 'development',
+  mode: 'production',
   output: {
     path: path.resolve(__dirname, 'bin'),
     filename: 'index.js',
@@ -34,6 +31,9 @@ module.exports = {
       }
     ]
   },
-  plugins: plugins,
+  plugins: [
+    new WebpackNotifierPlugin(),
+    new CopyPlugin([{ from: path.resolve(__dirname, 'client-global.js'), to: path.resolve(__dirname, 'bin', 'client-global.js') }])
+  ],
   bail: true
 };

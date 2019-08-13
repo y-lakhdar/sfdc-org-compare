@@ -1,7 +1,7 @@
 {
   "name": "sfdc-org-compare",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./bin/client-global.js",
   "license": "MIT",
   "dependencies": {
     "chalk": "^2.4.2",
@@ -20,15 +20,21 @@
     "@babel/node": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "babel-loader": "^8.0.6",
+    "conventional-recommended-bump": "^6.0.0",
+    "copy-webpack-plugin": "^5.0.4",
     "eslint": "^6.1.0",
     "prettier": "^1.18.2",
+    "semver": "^6.3.0",
+    "standard-version": "^7.0.0",
     "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6",
     "webpack-notifier": "^1.8.0"
   },
   "scripts": {
     "start": "babel-node -- ./src/index.js",
-    "build": "node_modules/.bin/webpack --process --progress --colors",
+    "build": "node_modules/.bin/webpack --process --progress",
+    "standard-version": "standard-version",
+    "release": "sh release.sh",
     "precommit": "lint-staged"
   },
   "prettier": {

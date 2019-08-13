@@ -16,7 +16,6 @@ const diff = (fileList1, fileList2, options) => {
       const content2 = getFileContentSync(file2);
 
       if (content2) {
-        // if (Buffer.compare(content1, content2)) {
         if (normalizeData(content1) != normalizeData(content2)) {
           summary.TO_UPDATE.push([file1, file2]);
         }

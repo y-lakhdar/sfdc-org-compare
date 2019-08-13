@@ -3,7 +3,7 @@ const chalk = require('chalk');
 const _ = require('underscore');
 
 export class Logger {
-  log(message, options, ...meta) {
+  static log(message, options, ...meta) {
     let fullMessage = '';
     _.each(meta, m => {
       if (m.toString()) {
@@ -16,13 +16,13 @@ export class Logger {
 
   static info(message, ...meta) {
     // if (this.level <= LoggerSingleton.ERROR) {
-    this.log(message, { style: chalk.yellow }, meta);
+    Logger.log(message, { style: chalk.yellow }, meta);
     // }
   }
 
   static error(message, ...meta) {
     // if (this.level <= LoggerSingleton.ERROR) {
-    this.log(message, { style: chalk.red }, meta);
+    Logger.log(message, { style: chalk.red }, meta);
     // }
   }
 }
