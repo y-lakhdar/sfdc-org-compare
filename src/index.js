@@ -1,5 +1,5 @@
-const path = require('path');
 const program = require('commander');
+import { resolve } from 'path';
 import { retrieveMetadata } from './tasks/retrieve';
 import { extract } from './tasks/extract';
 import { arePackagesIdentical } from './tasks/diff';
@@ -20,7 +20,7 @@ program
   .option('-d --delete', 'Delete file artifacts after the diff')
   .action((username1, username2, retrievetargetdir, xmlPackage, options) => {
     const folderNames = ['mdapipkg-1', 'mdapipkg-2'];
-    const pathToPackages = [path.resolve(retrievetargetdir, folderNames[0]), path.resolve(retrievetargetdir, folderNames[1])];
+    const pathToPackages = [resolve(retrievetargetdir, folderNames[0]), resolve(retrievetargetdir, folderNames[1])];
 
     Promise.all([retrieveMetadata(pathToPackages[0], xmlPackage, username1), retrieveMetadata(pathToPackages[1], xmlPackage, username2)])
       // TODO: add loading animation here

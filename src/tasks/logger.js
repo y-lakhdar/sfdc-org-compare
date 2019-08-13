@@ -1,13 +1,13 @@
-const os = require('os');
+import { EOL } from 'os';
+import { each } from 'underscore';
 const chalk = require('chalk');
-const _ = require('underscore');
 
 export class Logger {
   static log(message, options, ...meta) {
     let fullMessage = '';
-    _.each(meta, m => {
+    each(meta, m => {
       if (m.toString()) {
-        fullMessage += os.EOL + m.toString();
+        fullMessage += EOL + m.toString();
       }
       options.style = options.style || (x => x);
       console.log(options.style(message + fullMessage));

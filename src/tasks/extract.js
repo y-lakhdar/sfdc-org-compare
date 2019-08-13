@@ -1,4 +1,4 @@
-const path = require('path');
+import { resolve } from 'path';
 const extractZip = require('extract-zip');
 
 /**
@@ -7,13 +7,13 @@ const extractZip = require('extract-zip');
  * @param {*} zipPath The absolute path of the zip file
  */
 export const extract = zipPath => {
-  return new Promise((resolve, reject) => {
+  return new Promise((res, rej) => {
     // Logger.info(`Extracting ${zipPath}`);
-    return extractZip(path.resolve(zipPath, 'unpackaged.zip'), { dir: zipPath }, err => {
+    return extractZip(resolve(zipPath, 'unpackaged.zip'), { dir: zipPath }, err => {
       if (err) {
-        reject(err);
+        rej(err);
       }
-      resolve();
+      res();
     });
   });
 };

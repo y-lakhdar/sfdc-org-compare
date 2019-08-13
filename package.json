@@ -1,7 +1,16 @@
 {
   "name": "sfdc-org-compare",
   "version": "1.0.0",
+  "description": "A client that uses the Salesforce Metadata API to compare metadata between two Orgs",
   "main": "./bin/client-global.js",
+  "keywords": [
+    "sfdc",
+    "salesforce",
+    "compare",
+    "diff",
+    "package",
+    "organization"
+  ],
   "license": "MIT",
   "dependencies": {
     "chalk": "^2.4.2",
@@ -11,8 +20,7 @@
     "fs-extra": "^8.1.0",
     "inquirer": "^6.5.1",
     "recursive-readdir": "^2.2.2",
-    "underscore": "^1.9.1",
-    "update-notifier": "^3.0.1"
+    "underscore": "^1.9.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
@@ -26,6 +34,7 @@
     "prettier": "^1.18.2",
     "semver": "^6.3.0",
     "standard-version": "^7.0.0",
+    "update-notifier": "^3.0.1",
     "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6",
     "webpack-notifier": "^1.8.0"
@@ -33,6 +42,7 @@
   "scripts": {
     "start": "babel-node -- ./src/index.js",
     "build": "node_modules/.bin/webpack --process --progress",
+    "build2": "babel src -d lib",
     "standard-version": "standard-version",
     "release": "sh release.sh",
     "precommit": "lint-staged"
@@ -47,8 +57,22 @@
       "git add"
     ]
   },
+  "files": [
+    "bin",
+    "src"
+  ],
+  "bugs": {
+    "url": "https://github.com/y-lakhdar/sfdc-org-compare/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/y-lakhdar/sfdc-org-compare.git"
+  },
   "author": {
     "name": "Yassine Lakhdar",
     "url": "http://github.com/y-lakhdar"
+  },
+  "bin": {
+    "sfdcclient": "./bin/client-global.js"
   }
 }

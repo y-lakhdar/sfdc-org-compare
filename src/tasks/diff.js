@@ -1,17 +1,16 @@
 import { getFileNameFromPath } from '../utils/fileUtils';
-
-const os = require('os');
-const chalk = require('chalk');
-const Table = require('cli-table');
-const _ = require('underscore');
-const { fetchAllFiles, getFileContentSync } = require('./../utils/fileUtils');
-const { convertPath, normalizeData } = require('./../utils/stringUtils');
+import { EOL } from 'os';
+import chalk from 'chalk';
+import Table from 'cli-table';
+import { without, each, map, contains } from 'underscore';
+import { fetchAllFiles, getFileContentSync } from './../utils/fileUtils';
+import { convertPath, normalizeData } from './../utils/stringUtils';
 
 const diff = (fileList1, fileList2, options) => {
   const summary = { TO_CREATE: [], TO_UPDATE: [], TO_DELETE: [] };
   fileList1.forEach(file1 => {
     const file2 = convertPath(file1, options.folderNames[0], options.folderNames[1]);
-    if (_.contains(fileList2, file2)) {
+    if (contains(fileList2, file2)) {
       const content1 = getFileContentSync(file1);
       const content2 = getFileContentSync(file2);
 
@@ -19,7 +18,7 @@ const diff = (fileList1, fileList2, options) => {
         if (normalizeData(content1) != normalizeData(content2)) {
           summary.TO_UPDATE.push([file1, file2]);
         }
-        fileList2 = _.without(fileList2, file2);
+        fileList2 = without(fileList2, file2);
       } else {
         summary.TO_CREATE.push(file1);
       }
@@ -42,15 +41,15 @@ const printSummary = diffResult => {
   });
 
   const addToTable = (list, state, style) => {
-    _.each(list, file => {
+    each(list, file => {
       table.push([style(state), style(getFileNameFromPath(file))]);
     });
   };
   addToTable(diffResult.TO_CREATE, 'New', chalk.green);
   addToTable(diffResult.TO_DELETE, 'Deleted', chalk.red);
-  addToTable(_.map(diffResult.TO_UPDATE, file => file[0]), 'Changed', chalk.yellow);
+  addToTable(map(diffResult.TO_UPDATE, file => file[0]), 'Changed', chalk.yellow);
 
-  console.log(table.toString() + os.EOL);
+  console.log(table.toString() + EOL);
 
   if (diffResult.TO_CREATE.length > 0) {
     console.log(chalk.bold('New files:     ' + chalk.green(diffResult.TO_CREATE.length)));
@@ -65,7 +64,7 @@ const printSummary = diffResult => {
     console.log(chalk.bold('No changes found'));
   }
 
-  console.log(os.EOL);
+  console.log(EOL);
 };
 
 /**

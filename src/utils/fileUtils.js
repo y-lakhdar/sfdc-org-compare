@@ -1,4 +1,4 @@
-const _ = require('underscore');
+const { last } = require('underscore');
 const fs = require('fs-extra');
 const recursive = require('recursive-readdir');
 
@@ -24,7 +24,7 @@ export const getFileContentSync = filePath => {
 };
 
 export const getFileNameFromPath = path => {
-  return _.last(path.split('/'));
+  return last(path.split('/'));
 };
 
 export const getParentPath = path => {
