@@ -1,4 +1,4 @@
 node_modules
-force-app
+force-app*
 compare.sh
 bin

@@ -11,7 +11,8 @@
     "fs-extra": "^8.1.0",
     "inquirer": "^6.5.1",
     "recursive-readdir": "^2.2.2",
-    "underscore": "^1.9.1"
+    "underscore": "^1.9.1",
+    "update-notifier": "^3.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",

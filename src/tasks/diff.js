@@ -6,7 +6,6 @@ const Table = require('cli-table');
 const _ = require('underscore');
 const { fetchAllFiles, getFileContentSync } = require('./../utils/fileUtils');
 const { convertPath, normalizeData } = require('./../utils/stringUtils');
-// const logger = require('./logger');
 
 const diff = (fileList1, fileList2, options) => {
   const summary = { TO_CREATE: [], TO_UPDATE: [], TO_DELETE: [] };

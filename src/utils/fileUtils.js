@@ -26,3 +26,7 @@ export const getFileContentSync = filePath => {
 export const getFileNameFromPath = path => {
   return _.last(path.split('/'));
 };
+
+export const deleteDirectory = path => {
+  fs.removeSync(path);
+};
