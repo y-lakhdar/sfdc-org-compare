@@ -1,5 +1,3 @@
-// import { Logger } from './logger';
-const { getParentPath } = require('./../utils/fileUtils');
 const path = require('path');
 const extractZip = require('extract-zip');
 
