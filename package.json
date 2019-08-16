@@ -1,7 +1,15 @@
 {
   "name": "sfdc-org-compare",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "1.1.0",
+  "description": "A client that uses the Salesforce Metadata API to compare metadata between two Orgs",
+  "keywords": [
+    "sfdc",
+    "salesforce",
+    "compare",
+    "diff",
+    "package",
+    "organization"
+  ],
   "license": "MIT",
   "dependencies": {
     "chalk": "^2.4.2",
@@ -11,24 +19,22 @@
     "fs-extra": "^8.1.0",
     "inquirer": "^6.5.1",
     "recursive-readdir": "^2.2.2",
-    "underscore": "^1.9.1",
-    "update-notifier": "^3.0.1"
+    "underscore": "^1.9.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/node": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "babel-loader": "^8.0.6",
+    "conventional-recommended-bump": "^6.0.0",
     "eslint": "^6.1.0",
+    "np": "^5.0.3",
     "prettier": "^1.18.2",
-    "webpack": "^4.39.1",
-    "webpack-cli": "^3.3.6",
-    "webpack-notifier": "^1.8.0"
+    "require-dir": "^1.2.0",
+    "semver": "^6.3.0",
+    "standard-version": "^7.0.0",
+    "update-notifier": "^3.0.1"
   },
   "scripts": {
-    "start": "babel-node -- ./src/index.js",
-    "build": "node_modules/.bin/webpack --process --progress --colors",
+    "start": "node ./src/cli.js",
+    "standard-version": "standard-version",
+    "release": "sh release.sh",
     "precommit": "lint-staged"
   },
   "prettier": {
@@ -41,8 +47,22 @@
       "git add"
     ]
   },
+  "files": [
+    "bin",
+    "src"
+  ],
+  "bugs": {
+    "url": "https://github.com/y-lakhdar/sfdc-org-compare/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/y-lakhdar/sfdc-org-compare.git"
+  },
   "author": {
     "name": "Yassine Lakhdar",
     "url": "http://github.com/y-lakhdar"
+  },
+  "bin": {
+    "sfdcclient": "./src/cli.js"
   }
 }
