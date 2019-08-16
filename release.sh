@@ -23,7 +23,7 @@ fi
 
 
 # This checks your current branch for differences
-if [[ -z $(git status -uno | grep up-to-date) ]]; then
+if [[ -z $(git status -uno | grep "up to date") ]]; then
     echo "Your branch is *not* up-to-date with origin/$RELEASE_BRANCH"
     echo "You should either push or reset to what is at master."
     echo "If you are unsure, you most likely want to do git --reset hard origin/$RELEASE_BRANCH"
