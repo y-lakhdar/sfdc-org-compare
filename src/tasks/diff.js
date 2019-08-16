@@ -1,10 +1,10 @@
-import { getFileNameFromPath } from '../utils/fileUtils';
-import { EOL } from 'os';
-import chalk from 'chalk';
-import Table from 'cli-table';
-import { without, each, map, contains } from 'underscore';
-import { fetchAllFiles, getFileContentSync } from './../utils/fileUtils';
-import { convertPath, normalizeData } from './../utils/stringUtils';
+const chalk = require('chalk');
+const Table = require('cli-table');
+const { getFileNameFromPath } = require('../utils/fileUtils');
+const { EOL } = require('os');
+const { without, each, map, contains } = require('underscore');
+const { fetchAllFiles, getFileContentSync } = require('./../utils/fileUtils');
+const { convertPath, normalizeData } = require('./../utils/stringUtils');
 
 const diff = (fileList1, fileList2, options) => {
   const summary = { TO_CREATE: [], TO_UPDATE: [], TO_DELETE: [] };
@@ -75,7 +75,7 @@ const printSummary = diffResult => {
  * @param {*} [options={}] diff Options
  * @returns "true" if the 2 dirs are identical. "false" otherwise.
  */
-export const arePackagesIdentical = (dir1, dir2, options = {}) => {
+exports.arePackagesIdentical = (dir1, dir2, options = {}) => {
   return new Promise((resolve, reject) => {
     Promise.all([fetchAllFiles(dir1), fetchAllFiles(dir2)])
       .then(arrays => {

@@ -2,7 +2,6 @@
   "name": "sfdc-org-compare",
   "version": "1.0.0",
   "description": "A client that uses the Salesforce Metadata API to compare metadata between two Orgs",
-  "main": "./bin/client-global.js",
   "keywords": [
     "sfdc",
     "salesforce",
@@ -23,26 +22,17 @@
     "underscore": "^1.9.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/node": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "babel-loader": "^8.0.6",
     "conventional-recommended-bump": "^6.0.0",
-    "copy-webpack-plugin": "^5.0.4",
     "eslint": "^6.1.0",
+    "np": "^5.0.3",
     "prettier": "^1.18.2",
+    "require-dir": "^1.2.0",
     "semver": "^6.3.0",
     "standard-version": "^7.0.0",
-    "update-notifier": "^3.0.1",
-    "webpack": "^4.39.1",
-    "webpack-cli": "^3.3.6",
-    "webpack-notifier": "^1.8.0"
+    "update-notifier": "^3.0.1"
   },
   "scripts": {
-    "start": "babel-node -- ./src/index.js",
-    "build": "node_modules/.bin/webpack --process --progress",
-    "build2": "babel src -d lib",
+    "start": "node ./src/cli.js",
     "standard-version": "standard-version",
     "release": "sh release.sh",
     "precommit": "lint-staged"
@@ -73,6 +63,6 @@
     "url": "http://github.com/y-lakhdar"
   },
   "bin": {
-    "sfdcclient": "./bin/client-global.js"
+    "sfdcclient": "./src/cli.js"
   }
 }

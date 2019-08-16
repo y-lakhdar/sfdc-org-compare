@@ -1,8 +1,8 @@
-import { EOL } from 'os';
-import { each } from 'underscore';
+const { EOL } = require('os');
+const { each } = require('underscore');
 const chalk = require('chalk');
 
-export class Logger {
+module.exports = class Logger {
   static log(message, options, ...meta) {
     let fullMessage = '';
     each(meta, m => {
@@ -25,4 +25,4 @@ export class Logger {
     Logger.log(message, { style: chalk.red }, meta);
     // }
   }
-}
+};

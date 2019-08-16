@@ -1,11 +1,11 @@
 const program = require('commander');
-import { resolve } from 'path';
-import { retrieveMetadata } from './tasks/retrieve';
-import { extract } from './tasks/extract';
-import { arePackagesIdentical } from './tasks/diff';
-import { interactive } from './tasks/interactive';
-import { deleteDirectory } from './utils/fileUtils';
-import { Logger } from './tasks/logger';
+const { resolve } = require('path');
+const { retrieveMetadata } = require('./tasks/retrieve');
+const { extract } = require('./tasks/extract');
+const { arePackagesIdentical } = require('./tasks/diff');
+const { interactive } = require('./tasks/interactive');
+const { deleteDirectory } = require('./utils/fileUtils');
+const Logger = require('./tasks/logger');
 
 // Setup notification updates in case of a new version
 const pkg = require('./../package.json');

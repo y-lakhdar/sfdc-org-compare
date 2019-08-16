@@ -1,0 +1,33 @@
+language: node_js
+notifications:
+    email:
+      on_success: change
+      on_failure: always
+node_js:
+  - '8.9'
+cache:
+  yarn: true
+  directories:
+  - node_modules
+before_install:
+  - npm install -g npm@5.6.0
+before_script:
+  - npm install -g gulp
+script:
+  - source read.version.sh
+  - echo "$TRAVIS_TAG"
+  - npm run build
+deploy:
+  - provider: npm
+    email: ylakhdar@coveo.com
+    skip_cleanup: true
+    api_key:
+      secure: hJrChJSqV/AfdRjkPGhGSxfhgJb6GipDhth1GbxYYoQK9kJE7RpfBaznyShdPppvaM+t7eLzlUvNT07laX+UF/oHMS4yReKxLeYOODg49cUUxrpclSKT/84kyI3xpjbbmcxT9EPS7Ri+wMar8M2Becb4CApF9gCYduhkQ9MN7fx5zKqhdcmb4V6CLPXI8foxB0E9JVHCi3KB+znaWw/gJuQS/sIJLQBItHoG53vCoSFxu/azPkl1l/ZrR/n7xkCRjfcH0BPL8W1gXeCPBAVvZvi16yuw/1MAlSnsZm0X4g+Ks1j5D/DObZdUxvgXLsGNnVtyEltRP4S3njju6C/ksFQrFu2Jidd3/x5L3zeCXognDyWvJZuo4ApKT13g1r8KlpQVrK33DIOsGwxUAqSMs2OYucBzqM/ACTGvgwgA5+zkBEOZ0dlGlvs2OeMd4YAXIo5UbOh1PxMy44zZcLj2fjqfjE6qp2rkLncoBF75IJRvfqf53pv1Ok8oyOYCneGTXIXZyiIZovNwtP/mRwb/LHPf7U9+mQ0u04sRF+Dqi3vkvuzdHAeCoTRjolqRJszPk5S7wYg6XllPasYn/Uvd+4j2GXU8VsGKUBYkEKNZQQG+s91nW0wUi1fDfX+xiLKGkXiIGYL2WaelE3ifEQ1yYIoas6iDaB6ix0ETq6+G6jQ=
+    on:
+      tags: true
+      all_branches: true
+branches:
+  only:
+    - master
+    - develop
+    - "/[0-9]+\\.[0-9]+\\.[0-9]+/"

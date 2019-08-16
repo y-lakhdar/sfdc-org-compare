@@ -1,7 +1,7 @@
-import { getFileNameFromPath } from '../utils/fileUtils';
-import { spawn } from 'child_process';
-import { each, keys } from 'underscore';
-import { prompt } from 'inquirer';
+const { getFileNameFromPath } = require('../utils/fileUtils');
+const { spawn } = require('child_process');
+const { each, keys } = require('underscore');
+const { prompt } = require('inquirer');
 
 const openVsCodeDiff = filesToDiff => {
   each(filesToDiff, group => {
@@ -13,7 +13,7 @@ const openVsCodeDiff = filesToDiff => {
   });
 };
 
-export const interactive = diffResult => {
+exports.interactive = diffResult => {
   const fileDict = {};
 
   each(diffResult.TO_UPDATE, group => {

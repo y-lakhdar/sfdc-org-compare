@@ -10,23 +10,40 @@ then
   exit 1
 fi
 
-# Making sure the directory is clean
-if [ -z "$(git status --porcelain)" ]; then
-  # Working directory clean
-  echo 'The directory is clean. All good!'
-else
-  echo 'Uncommitted changes!'
-  exit 1
+echo
+echo "Checking status of current branch"
+echo
+
+# This checks your current branch for uncommitted changes
+if [[ -n $(git status -s) ]]; then
+    echo 'You have unstaged changes according to `git status -s`'
+    echo "Please commit, reset, or stash those changes"
+    exit 1
 fi
 
-# Building project and exit if errors
-echo 'Launching unit tests...'
-npm run build || exit 1
 
-echo 'Start the deployment'
-git flow release start ${nextNpmVersion}
+# This checks your current branch for differences
+if [[ -z $(git status -uno | grep up-to-date) ]]; then
+    echo "Your branch is *not* up-to-date with origin/$RELEASE_BRANCH"
+    echo "You should either push or reset to what is at master."
+    echo "If you are unsure, you most likely want to do git --reset hard origin/$RELEASE_BRANCH"
+    exit 1
+fi
+
+# This publishes the package
+echo
+echo "Create release branch"
+echo
+# git flow release start ${nextNpmVersion}
+git checkout -b release/${nextNpmVersion} develop
 npm run standard-version
-git flow release finish ${nextNpmVersion}
+# git flow release finish ${nextNpmVersion}
+git checkout master
+git merge --no-ff release/${nextNpmVersion} --message "Deployed by release script"
+git tag -a ${nextNpmVersion}
+git checkout develop
+git merge --no-ff release/${nextNpmVersion} --message "Deployed by release script"
+git branch -d release/${nextNpmVersion}
 echo "Pushing to master"
 git push origin master
 echo "Pushing to $DEV_BRANCH_NAME"
