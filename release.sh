@@ -35,13 +35,13 @@ echo
 echo "Create release branch"
 echo
 # git flow release start ${nextNpmVersion}
-git checkout -b release/${nextNpmVersion} develop
+git checkout -b release/${nextNpmVersion} ${DEV_BRANCH_NAME}
 npm run standard-version
 # git flow release finish ${nextNpmVersion}
 git checkout master
 git merge --no-ff release/${nextNpmVersion} --message "Deployed by release script"
-git tag -a ${nextNpmVersion}
-git checkout develop
+git tag -a ${nextNpmVersion} --message "version ${nextNpmVersion}"
+git checkout ${DEV_BRANCH_NAME}
 git merge --no-ff release/${nextNpmVersion} --message "Deployed by release script"
 git branch -d release/${nextNpmVersion}
 echo "Pushing to master"
