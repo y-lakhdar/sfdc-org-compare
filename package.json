@@ -1,6 +1,6 @@
 {
   "name": "sfdc-org-compare",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A client that uses the Salesforce Metadata API to compare metadata between two Orgs",
   "keywords": [
     "sfdc",
@@ -19,7 +19,8 @@
     "fs-extra": "^8.1.0",
     "inquirer": "^6.5.1",
     "recursive-readdir": "^2.2.2",
-    "underscore": "^1.9.1"
+    "underscore": "^1.9.1",
+    "update-notifier": "^3.0.1"
   },
   "devDependencies": {
     "conventional-recommended-bump": "^6.0.0",
@@ -28,8 +29,7 @@
     "prettier": "^1.18.2",
     "require-dir": "^1.2.0",
     "semver": "^6.3.0",
-    "standard-version": "^7.0.0",
-    "update-notifier": "^3.0.1"
+    "standard-version": "^7.0.0"
   },
   "scripts": {
     "start": "node ./src/cli.js",

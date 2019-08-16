@@ -26,5 +26,4 @@ deploy:
 branches:
   only:
     - master
-    - develop
     - "/[0-9]+\\.[0-9]+\\.[0-9]+/"

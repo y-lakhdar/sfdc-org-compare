@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+'use strict';
 const program = require('commander');
 const { resolve } = require('path');
 const { retrieveMetadata } = require('./tasks/retrieve');
