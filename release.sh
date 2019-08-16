@@ -40,7 +40,7 @@ npm run standard-version
 # git flow release finish ${nextNpmVersion}
 git checkout master
 git merge --no-ff release/${nextNpmVersion} --message "Deployed by release script"
-git tag -a ${nextNpmVersion} --message "v${nextNpmVersion}"
+git tag -a ${nextNpmVersion}
 git checkout ${DEV_BRANCH_NAME}
 git merge --no-ff release/${nextNpmVersion} --message "Deployed by release script"
 git branch -d release/${nextNpmVersion}
