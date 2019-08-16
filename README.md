@@ -22,7 +22,7 @@ $ npm install sfdc-org-compare -g
 ## Usage
 
 ```
-$ sfdc-org-compare --help
+$ sfdcclient --help
 
   Usage: cli [options] [command]
 
